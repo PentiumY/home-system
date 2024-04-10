@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask to Arduino</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Flask to Arduino Communication</h1>
+    <button id="led-on">Turn LED ON</button>
+    <button id="led-off">Turn LED OFF</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#led-on").click(function(){
+                $.get("/led/on");
+            });
+
+            $("#led-off").click(function(){
+                $.get("/led/off");
+            });
+        });
+    </script>
+</body>
+</html>
