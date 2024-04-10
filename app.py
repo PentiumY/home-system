@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 import serial
 
 app = Flask(__name__)
@@ -8,15 +8,14 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/led/<state>')
-def control_led(state):
-    if state == 'on':
-        print("on")
-        #arduino.write(b'1')  # Sending '1' to turn LED ON
-    elif state == 'off':
-        print("off")
-        #arduino.write(b'0')  # Sending '0' to turn LED OFF
-    return state
+@app.route('/api/data', methods=['POST'])
+def receive_data():
+    data = request.get_json()
+    print('Received data from client:', data)
+    # Process the received data as needed
+    # You can send a response back to the client if necessary
+    return jsonify({'message': 'Data received successfully'})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

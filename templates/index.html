@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Home Control</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <script src="{{ url_for('static', filename='script/controller.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -21,7 +23,8 @@
     
     <section id="main-content">
         <h2>Lights Control</h2>
-        <button id="toggleLights">Toggle Lights</button>
+        <button id="led-switch">Led Switch</button>
+        <button id="led-off">Turn LED OFF</button>
     </section>
     
     <footer>
