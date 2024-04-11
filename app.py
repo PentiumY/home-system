@@ -4,6 +4,8 @@ import serial
 app = Flask(__name__)
 #arduino = serial.Serial('COM3', 9600)  # Adjust the port accordingly
 
+app.debug = True
+
 tempState: dict = {
     "Main light": False
 }
@@ -35,15 +37,15 @@ def index():
 @app.route('/api/data', methods=['POST'])
 def receive_data():
     data = request.get_json()
-    #print('Received data from client:', data)
+    print('Received data from client:', data)
     # Process the received data as needed
 
-    print(f"Setting {findItem(data["itemID"])["name"]} to {data["state"]}")
-    setItemData(data["itemID"],data["state"])
+    #print(f"Setting {findItem(data["itemID"])["name"]} to {data["state"]}")
+    #setItemData(data["itemID"],data["state"])
 
     # You can send a response back to the client if necessary
     return jsonify({'message': 'Data received successfully'})
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='localhost',debug=False,port=9874)
